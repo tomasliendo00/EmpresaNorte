@@ -5,12 +5,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EmpresaNorte.Datos
 {
     public class AccesoDatos
     {
-        private string CadenaConexion = "";
+        private string CadenaConexion = @"Data Source=DESKTOP-R6HLHK7\SQLEXPRESS;Initial Catalog=EmpresaNorte;Integrated Security=True;";
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;

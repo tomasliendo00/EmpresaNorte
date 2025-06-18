@@ -56,5 +56,11 @@ namespace EmpresaNorte.Presentacion
                             MessageBoxIcon.Information,
                             MessageBoxDefaultButton.Button1);
         }
+
+        private void empleadosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmEmpleados frmEmpleados = new FrmEmpleados();
+            frmEmpleados.ShowDialog();
+        }
     }
 }

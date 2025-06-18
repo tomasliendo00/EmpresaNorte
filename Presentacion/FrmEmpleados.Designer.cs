@@ -32,14 +32,15 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.grbCriterios = new System.Windows.Forms.GroupBox();
-            this.lblNombre = new System.Windows.Forms.Label();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.lblSuc = new System.Windows.Forms.Label();
-            this.cboSucursal = new System.Windows.Forms.ComboBox();
+            this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.chbTodos = new System.Windows.Forms.CheckBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cboSucursal = new System.Windows.Forms.ComboBox();
+            this.lblSuc = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.grbCriterios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSalir
@@ -50,6 +51,7 @@
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnNuevo
             // 
@@ -59,20 +61,23 @@
             this.btnNuevo.TabIndex = 3;
             this.btnNuevo.Text = "Nuevo...";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // btnConsultar
             // 
-            this.btnConsultar.Location = new System.Drawing.Point(671, 59);
+            this.btnConsultar.Location = new System.Drawing.Point(566, 59);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(99, 41);
             this.btnConsultar.TabIndex = 4;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // grbCriterios
             // 
+            this.grbCriterios.Controls.Add(this.btnLimpiar);
             this.grbCriterios.Controls.Add(this.btnConsultar);
-            this.grbCriterios.Controls.Add(this.dataGridView1);
+            this.grbCriterios.Controls.Add(this.dgvEmpleados);
             this.grbCriterios.Controls.Add(this.chbTodos);
             this.grbCriterios.Controls.Add(this.cboSucursal);
             this.grbCriterios.Controls.Add(this.lblSuc);
@@ -85,38 +90,13 @@
             this.grbCriterios.TabStop = false;
             this.grbCriterios.Text = "Criterios";
             // 
-            // lblNombre
+            // dgvEmpleados
             // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(68, 38);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 13);
-            this.lblNombre.TabIndex = 6;
-            this.lblNombre.Text = "Nombre";
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.Location = new System.Drawing.Point(135, 35);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(166, 20);
-            this.txtNombre.TabIndex = 7;
-            // 
-            // lblSuc
-            // 
-            this.lblSuc.AutoSize = true;
-            this.lblSuc.Location = new System.Drawing.Point(64, 73);
-            this.lblSuc.Name = "lblSuc";
-            this.lblSuc.Size = new System.Drawing.Size(48, 13);
-            this.lblSuc.TabIndex = 8;
-            this.lblSuc.Text = "Sucursal";
-            // 
-            // cboSucursal
-            // 
-            this.cboSucursal.FormattingEnabled = true;
-            this.cboSucursal.Location = new System.Drawing.Point(135, 70);
-            this.cboSucursal.Name = "cboSucursal";
-            this.cboSucursal.Size = new System.Drawing.Size(166, 21);
-            this.cboSucursal.TabIndex = 9;
+            this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmpleados.Location = new System.Drawing.Point(6, 106);
+            this.dgvEmpleados.Name = "dgvEmpleados";
+            this.dgvEmpleados.Size = new System.Drawing.Size(764, 267);
+            this.dgvEmpleados.TabIndex = 12;
             // 
             // chbTodos
             // 
@@ -127,14 +107,51 @@
             this.chbTodos.TabIndex = 11;
             this.chbTodos.Text = "Todos";
             this.chbTodos.UseVisualStyleBackColor = true;
+            this.chbTodos.CheckedChanged += new System.EventHandler(this.chbTodos_CheckedChanged);
             // 
-            // dataGridView1
+            // cboSucursal
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 106);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(764, 267);
-            this.dataGridView1.TabIndex = 12;
+            this.cboSucursal.FormattingEnabled = true;
+            this.cboSucursal.Location = new System.Drawing.Point(135, 70);
+            this.cboSucursal.Name = "cboSucursal";
+            this.cboSucursal.Size = new System.Drawing.Size(166, 21);
+            this.cboSucursal.TabIndex = 9;
+            this.cboSucursal.SelectedIndexChanged += new System.EventHandler(this.cboSucursal_SelectedIndexChanged);
+            // 
+            // lblSuc
+            // 
+            this.lblSuc.AutoSize = true;
+            this.lblSuc.Location = new System.Drawing.Point(64, 73);
+            this.lblSuc.Name = "lblSuc";
+            this.lblSuc.Size = new System.Drawing.Size(48, 13);
+            this.lblSuc.TabIndex = 8;
+            this.lblSuc.Text = "Sucursal";
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(135, 35);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(166, 20);
+            this.txtNombre.TabIndex = 7;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(68, 38);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.TabIndex = 6;
+            this.lblNombre.Text = "Nombre";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(671, 59);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(99, 41);
+            this.btnLimpiar.TabIndex = 13;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // FrmEmpleados
             // 
@@ -148,7 +165,7 @@
             this.Text = "FrmEmpleados";
             this.grbCriterios.ResumeLayout(false);
             this.grbCriterios.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,7 +180,8 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.ComboBox cboSucursal;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvEmpleados;
         private System.Windows.Forms.CheckBox chbTodos;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }
