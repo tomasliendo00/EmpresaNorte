@@ -46,6 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\AccesoDatos.cs" />
+    <Compile Include="Datos\EmpleadoDao.cs" />
+    <Compile Include="Datos\Filtro.cs" />
+    <Compile Include="Datos\Parametro.cs" />
+    <Compile Include="Negocio\Barrio.cs" />
+    <Compile Include="Negocio\Empleado.cs" />
+    <Compile Include="Negocio\Provincia.cs" />
+    <Compile Include="Negocio\Sucursal.cs" />
+    <Compile Include="Negocio\TipoEmpleado.cs" />
     <Compile Include="Presentacion\FrmDetalles.cs">
       <SubType>Form</SubType>
     </Compile>
