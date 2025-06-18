@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmpresaNorte.Datos
 {
-    internal class EmpleadoDao
+    public class EmpleadoDao
     {
     }
 }

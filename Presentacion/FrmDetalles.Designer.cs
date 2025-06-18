@@ -39,7 +39,7 @@
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lblFechaNac = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaNac = new System.Windows.Forms.DateTimePicker();
             this.lblTelefono = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -146,12 +146,12 @@
             this.lblFechaNac.TabIndex = 23;
             this.lblFechaNac.Text = "Fecha de Nacimiento";
             // 
-            // dateTimePicker1
+            // dtpFechaNac
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(165, 183);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(211, 20);
-            this.dateTimePicker1.TabIndex = 24;
+            this.dtpFechaNac.Location = new System.Drawing.Point(165, 183);
+            this.dtpFechaNac.Name = "dtpFechaNac";
+            this.dtpFechaNac.Size = new System.Drawing.Size(211, 20);
+            this.dtpFechaNac.TabIndex = 24;
             // 
             // lblTelefono
             // 
@@ -261,7 +261,7 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.lblTelefono);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpFechaNac);
             this.Controls.Add(this.lblFechaNac);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
@@ -294,7 +294,7 @@
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label lblFechaNac;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpFechaNac;
         private System.Windows.Forms.Label lblTelefono;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label lblEmail;
