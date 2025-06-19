@@ -19,6 +19,7 @@ namespace EmpresaNorte.Presentacion
             InitializeComponent();
             accesoDatos = new AccesoDatos();
             CargarCombo("Sucursales");
+            // prueba
         }
 
         private void CargarCombo(string nombreTabla)
