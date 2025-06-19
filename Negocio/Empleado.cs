@@ -15,8 +15,10 @@ namespace EmpresaNorte.Negocio
         private DateTime fechaNacimiento;    // date not null
         private string telefono;             // varchar(20) not null
         private string email;                // varchar(50) not null
-        private Sucursal sucursal;
-        private TipoEmpleado tipoEmpleado;
+        //private Sucursal sucursal;
+        private int sucursal;
+        //private TipoEmpleado tipoEmpleado;
+        private int tipoEmpleado;
         private DateTime fechaIngreso;       // date not null
 
         public int ID
@@ -61,13 +63,25 @@ namespace EmpresaNorte.Negocio
             set { email = value; }
         }
 
-        public Sucursal Sucursal
+        //public Sucursal Sucursal
+        //{
+        //    get { return sucursal; }
+        //    set { sucursal = value; }
+        //}
+
+        public int Sucursal
         {
             get { return sucursal; }
             set { sucursal = value; }
         }
 
-        public TipoEmpleado TipoEmpleado
+        //public TipoEmpleado TipoEmpleado
+        //{
+        //    get { return tipoEmpleado; }
+        //    set { tipoEmpleado = value; }
+        //}
+
+        public int TipoEmpleado
         {
             get { return tipoEmpleado; }
             set { tipoEmpleado = value; }

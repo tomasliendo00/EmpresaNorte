@@ -32,13 +32,15 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.grbCriterios = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.chbTodos = new System.Windows.Forms.CheckBox();
             this.cboSucursal = new System.Windows.Forms.ComboBox();
             this.lblSuc = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnBorrar = new System.Windows.Forms.Button();
             this.grbCriterios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
@@ -89,6 +91,16 @@
             this.grbCriterios.TabIndex = 5;
             this.grbCriterios.TabStop = false;
             this.grbCriterios.Text = "Criterios";
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(671, 59);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(99, 41);
+            this.btnLimpiar.TabIndex = 13;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // dgvEmpleados
             // 
@@ -143,26 +155,38 @@
             this.lblNombre.TabIndex = 6;
             this.lblNombre.Text = "Nombre";
             // 
-            // btnLimpiar
+            // btnEditar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(671, 59);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(99, 41);
-            this.btnLimpiar.TabIndex = 13;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            this.btnEditar.Enabled = false;
+            this.btnEditar.Location = new System.Drawing.Point(117, 397);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(99, 41);
+            this.btnEditar.TabIndex = 6;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnBorrar
+            // 
+            this.btnBorrar.Enabled = false;
+            this.btnBorrar.Location = new System.Drawing.Point(222, 397);
+            this.btnBorrar.Name = "btnBorrar";
+            this.btnBorrar.Size = new System.Drawing.Size(99, 41);
+            this.btnBorrar.TabIndex = 7;
+            this.btnBorrar.Text = "Borrar";
+            this.btnBorrar.UseVisualStyleBackColor = true;
             // 
             // FrmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBorrar);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.grbCriterios);
             this.Name = "FrmEmpleados";
-            this.Text = "FrmEmpleados";
+            this.Text = "Empleados";
             this.grbCriterios.ResumeLayout(false);
             this.grbCriterios.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).EndInit();
@@ -183,5 +207,7 @@
         private System.Windows.Forms.DataGridView dgvEmpleados;
         private System.Windows.Forms.CheckBox chbTodos;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnBorrar;
     }
 }

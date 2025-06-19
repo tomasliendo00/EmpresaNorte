@@ -39,7 +39,14 @@ namespace EmpresaNorte.Presentacion
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if(MessageBox.Show("Confirmar salida",
+                            "Saliendo.",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question,
+                            MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
 
         private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
