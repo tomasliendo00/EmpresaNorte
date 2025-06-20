@@ -51,8 +51,8 @@ namespace EmpresaNorte.Presentacion
 
         private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmDetalles frmDetalles = new FrmDetalles();
-            frmDetalles.ShowDialog();
+            FrmEmpleados frmEmpleados = new FrmEmpleados();
+            frmEmpleados.ShowDialog();
         }
 
         private void versionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -68,6 +68,12 @@ namespace EmpresaNorte.Presentacion
         {
             FrmEmpleados frmEmpleados = new FrmEmpleados();
             frmEmpleados.ShowDialog();
+        }
+
+        private void barriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmBarrios frmBarrios = new FrmBarrios();
+            frmBarrios.ShowDialog();
         }
     }
 }

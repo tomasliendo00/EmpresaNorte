@@ -55,6 +55,12 @@
     <Compile Include="Negocio\Provincia.cs" />
     <Compile Include="Negocio\Sucursal.cs" />
     <Compile Include="Negocio\TipoEmpleado.cs" />
+    <Compile Include="Presentacion\FrmBarrios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\FrmBarrios.Designer.cs">
+      <DependentUpon>FrmBarrios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\FrmDetalles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentacion\FrmBarrios.resx">
+      <DependentUpon>FrmBarrios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\FrmDetalles.resx">
       <DependentUpon>FrmDetalles.cs</DependentUpon>
     </EmbeddedResource>

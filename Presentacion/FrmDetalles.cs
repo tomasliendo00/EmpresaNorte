@@ -131,8 +131,14 @@ namespace EmpresaNorte.Presentacion
             empleado.FechaNacimiento = dtpFechaNac.Value;
             empleado.Telefono = txtTelefono.Text; 
             empleado.Email = txtEmail.Text;
-            empleado.Sucursal = Convert.ToInt32(cboSucursal.SelectedValue);             
-            empleado.TipoEmpleado = Convert.ToInt32(cboTipoEmpleado.SelectedValue);     
+
+            // Reemplazar estas líneas:
+            //empleado.Sucursal = Convert.ToInt32(cboSucursal.SelectedValue);
+            //empleado.TipoEmpleado = Convert.ToInt32(cboTipoEmpleado.SelectedValue);
+
+            // Por estas líneas:
+            empleado.Sucursal = new Sucursal { ID = Convert.ToInt32(cboSucursal.SelectedValue) };
+            empleado.TipoEmpleado = new TipoEmpleado { ID = Convert.ToInt32(cboTipoEmpleado.SelectedValue) };
             empleado.FechaIngreso = dtpFechaIng.Value;
 
             string consultaSQL = "SET DATEFORMAT DMY; " +

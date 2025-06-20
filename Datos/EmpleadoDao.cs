@@ -160,19 +160,19 @@ namespace EmpresaNorte.Datos
             return listaEmpleados;
         }
 
-        public int InsertarEmpleado(Empleado oEmpleado)
-        {
-            // código
-        }
+        //public int InsertarEmpleado(Empleado oEmpleado)
+        //{
+        //    // código
+        //}
 
-        public Empleado RecuperarEmpleadoPorID(int codigo)
-        {
-            // código
-        }
+        //public Empleado RecuperarEmpleadoPorID(int codigo)
+        //{
+        //    // código
+        //}
 
-        public int BorrarEmpleado(int codigo)
-        {
-            // código
-        }
+        //public int BorrarEmpleado(int codigo)
+        //{
+        //    // código
+        //}
     }
 }
