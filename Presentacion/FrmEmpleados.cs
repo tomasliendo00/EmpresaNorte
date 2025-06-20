@@ -18,17 +18,18 @@ namespace EmpresaNorte.Presentacion
         {
             InitializeComponent();
             accesoDatos = new AccesoDatos();
-            CargarCombo("Sucursales");
+            CargarCombo("Sucursales", cboSucursal);
+            CargarCombo("Tipos_Empleado", cboTipoEmpleado);
             // prueba
         }
 
-        private void CargarCombo(string nombreTabla)
+        private void CargarCombo(string nombreTabla, ComboBox combo)
         {
             DataTable dt = accesoDatos.ConsultarTabla(nombreTabla);
-            cboSucursal.DataSource = dt;
-            cboSucursal.ValueMember = "id_sucursal";
-            cboSucursal.DisplayMember = "direccion";
-            cboSucursal.SelectedIndex = -1;
+            combo.DataSource = dt;
+            combo.DisplayMember = dt.Columns[1].ColumnName;
+            combo.ValueMember = dt.Columns[0].ColumnName;
+            combo.SelectedIndex = -1;
         }
 
         private void cboSucursal_SelectedIndexChanged(object sender, EventArgs e)
@@ -49,12 +50,15 @@ namespace EmpresaNorte.Presentacion
                 txtNombre.Text = string.Empty;
                 cboSucursal.Enabled = false;
                 cboSucursal.SelectedIndex = -1;
+                cboTipoEmpleado.Enabled = false;
+                cboTipoEmpleado.SelectedIndex = -1;
                 btnConsultar.Focus();
             }
             else
             {
                 txtNombre.Enabled = true;
                 cboSucursal.Enabled = true;
+                cboTipoEmpleado.Enabled = true;
             }
         }
 
@@ -66,16 +70,41 @@ namespace EmpresaNorte.Presentacion
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            string consultaSQL = "Select * from Empleados where 1=1 ";
+            dgvEmpleados.Columns.Clear();
+            //string consultaSQL = "Select * from Empleados where 1=1 ";
+            string consultaSQL = "SELECT e.Nombre, " +
+                                 "e.Apellido, " +
+                                 "s.Direccion 'Sucursal', " +
+                                 "t.Descripcion 'Cargo', " +
+                                 "e.DNI, " +
+                                 "e.Telefono 'Teléfono', " +
+                                 "e.Email, " +
+                                 "e.fecha_nac 'Fecha Nacimiento', " +
+                                 "e.fecha_ingreso 'Fecha Ingreso' " +
+                                 "from Empleados e " +
+                                 "join Sucursales s ON s.id_sucursal = e.id_sucursal " +
+                                 "join Tipos_Empleado t ON t.id_tipo_empleado = e.id_tipo_empleado " +
+                                 "where 1=1 ";
+            if (chbBarrioProv.Checked == true)
+            {
+                consultaSQL = "select e.Nombre, e.Apellido, s.Direccion 'Sucursal', b.descripcion 'Barrio', p.descripcion 'Provincia', t.Descripcion 'Cargo', e.DNI, e.Telefono 'Teléfono', e.Email, e.fecha_nac 'Fecha Nacimiento', e.fecha_ingreso 'Fecha Ingreso' from Empleados e join Sucursales s ON s.id_sucursal = e.id_sucursal join Tipos_Empleado t ON t.id_tipo_empleado = e.id_tipo_empleado join Barrios b ON b.id_barrio = S.id_barrio join Provincias p ON p.id_provincia = b.id_provincia where 1=1";
+            }
             if (!string.IsNullOrEmpty(txtNombre.Text))
                 consultaSQL += $"and (nombre like '%{txtNombre.Text}%' or apellido like '%{txtNombre.Text}%') ";
             if (cboSucursal.SelectedIndex != -1)
-                consultaSQL += $"and id_sucursal = {cboSucursal.SelectedValue} ";
+                consultaSQL += $"and s.id_sucursal = {cboSucursal.SelectedValue} ";
+            if (cboTipoEmpleado.SelectedIndex != -1)
+                consultaSQL += $"and t.id_tipo_empleado = {cboTipoEmpleado.SelectedValue} ";
 
             dgvEmpleados.DataSource = accesoDatos.ConsultarBD(consultaSQL);
 
-            if (dgvEmpleados.Columns.Count > 0)
-                dgvEmpleados.Columns[0].Visible = false;
+            foreach (DataGridViewColumn col in dgvEmpleados.Columns)
+            {
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            }
+
+            //if (dgvEmpleados.Columns.Count > 0)
+            //    dgvEmpleados.Columns[0].Visible = false;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -83,7 +112,19 @@ namespace EmpresaNorte.Presentacion
             dgvEmpleados.Columns.Clear();
             txtNombre.Clear();
             cboSucursal.SelectedIndex = -1;
+            cboTipoEmpleado.SelectedIndex = -1;
             chbTodos.Checked = false;
+            chbBarrioProv.Checked = false;
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -50,59 +50,75 @@ namespace EmpresaNorte.Presentacion
         {
             if (txtNombre.Text == string.Empty)
             {
-                MessageBox.Show("Debe cargar el nombre del empleado.");
+                MessageBox.Show("Debe cargar el nombre del empleado.","Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 txtNombre.Focus();
                 return false;
             }
             else if (txtApellido.Text == string.Empty)
             {
-                MessageBox.Show("Debe cargar el apellido del empleado.");
+                MessageBox.Show("Debe cargar el apellido del empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtApellido.Focus();
                 return false;
             }
             else if (txtDNI.Text == string.Empty)
             {
-                MessageBox.Show("Debe cargar el DNI del empleado.");
+                MessageBox.Show("Debe cargar el DNI del empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtDNI.Focus();
                 return false;
             }            
             else if (dtpFechaNac.Value > DateTime.Now.AddYears(-18))
             {
-                MessageBox.Show("El empleado no puede tener menos de 18 años.");
+                MessageBox.Show("El empleado no puede tener menos de 18 años.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 dtpFechaNac.Focus();
                 return false;
             }
             else if (txtTelefono.Text == string.Empty)
             {
-                MessageBox.Show("Debe cargar el número de telefono del empleado.");
+                MessageBox.Show("Debe cargar el número de telefono del empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtTelefono.Focus();
                 return false;
             }
             else if (txtEmail.Text == string.Empty)
             {
-                MessageBox.Show("Debe cargar el mail del empleado.");
+                MessageBox.Show("Debe cargar el mail del empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtEmail.Focus();
                 return false;
             }
             else if (cboSucursal.SelectedIndex == -1)
             {
-                MessageBox.Show("Debe seleccionar una sucursal.");
+                MessageBox.Show("Debe seleccionar una sucursal.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cboSucursal.Focus();
                 return false;
             }
             else if (cboTipoEmpleado.SelectedIndex == -1)
             {
-                MessageBox.Show("Debe seleccionar el tipo de empleado.");
+                MessageBox.Show("Debe seleccionar el tipo de empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 cboTipoEmpleado.Focus();
                 return false;
             }
-
-            // VALIDAR NOMBRE NO TENGA NUMEROS
-            // VALIDAR APELLIDO NO TENGA NUMEROS
-            // VALIDAR DNI NO TENGA LETRAS
-            // VALIDAR TELEFONO NO TENGA LETRAS
-            // VALIDAR EMAIL CONTENGA @ Y .COM
-
+            else if (!txtNombre.Text.All(char.IsLetter) || !txtApellido.Text.All(char.IsLetter))
+            {
+                MessageBox.Show("El nombre y el apellido solo pueden contener letras.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            else if (!txtDNI.Text.All(char.IsNumber))
+            {
+                MessageBox.Show("El DNI solo puede contener números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtDNI.Focus();
+                return false;
+            }
+            else if (!txtTelefono.Text.All(char.IsNumber))
+            {
+                MessageBox.Show("El teléfono solo puede contener números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtTelefono.Focus();
+                return false;
+            }
+            else if(!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains(".com"))
+            {
+                MessageBox.Show("Ingrese un email válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtEmail.Focus();
+                return false;
+            }
             return true;
         }
 
@@ -115,8 +131,8 @@ namespace EmpresaNorte.Presentacion
             empleado.FechaNacimiento = dtpFechaNac.Value;
             empleado.Telefono = txtTelefono.Text; 
             empleado.Email = txtEmail.Text;
-            empleado.Sucursal = Convert.ToInt32(cboSucursal.SelectedValue);             // MODIFICAR
-            empleado.TipoEmpleado = Convert.ToInt32(cboTipoEmpleado.SelectedValue);     // MODIFICAR
+            empleado.Sucursal = Convert.ToInt32(cboSucursal.SelectedValue);             
+            empleado.TipoEmpleado = Convert.ToInt32(cboTipoEmpleado.SelectedValue);     
             empleado.FechaIngreso = dtpFechaIng.Value;
 
             string consultaSQL = "SET DATEFORMAT DMY; " +
