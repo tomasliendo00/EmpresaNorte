@@ -19,6 +19,7 @@ namespace EmpresaNorte.Presentacion
         BORRAR,
         NUEVO
     }
+
     public partial class FrmDetalles : Form
     {
         AccesoDatos accesoDatos;
