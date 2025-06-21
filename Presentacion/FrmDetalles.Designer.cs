@@ -277,6 +277,7 @@
             this.Controls.Add(this.grbDetalles);
             this.Name = "FrmDetalles";
             this.Text = "Detalles Empleados";
+            this.Load += new System.EventHandler(this.FrmDetalles_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

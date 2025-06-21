@@ -64,7 +64,7 @@ namespace EmpresaNorte.Presentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            FrmDetalles frmDetalles = new FrmDetalles();
+            FrmDetalles frmDetalles = new FrmDetalles(Modo.NUEVO,null);
             frmDetalles.ShowDialog();
         }
 

@@ -12,16 +12,51 @@ using System.Windows.Forms;
 
 namespace EmpresaNorte.Presentacion
 {
+    public enum Modo
+    {
+        VER = 1,
+        EDITAR,
+        BORRAR,
+        NUEVO
+    }
     public partial class FrmDetalles : Form
     {
         AccesoDatos accesoDatos;
-        public FrmDetalles()
+        Modo accion;
+        Empleado oEmpleado;
+        public FrmDetalles(Modo modo, Empleado empleado)
         {
             InitializeComponent();
             accesoDatos = new AccesoDatos();
+            accion = modo;
+            oEmpleado = empleado;
+        }
+
+        private void FrmDetalles_Load(object sender, EventArgs e)
+        {
             FechaMaxMin();
             CargarCombo("sucursales", cboSucursal);
             CargarCombo("tipos_empleado", cboTipoEmpleado);
+            if(accion == Modo.NUEVO)
+            {
+                oEmpleado = new Empleado();
+            }
+            else
+            {
+                txtNombre.Text = oEmpleado.Nombres.ToString();
+                txtApellido.Text = oEmpleado.Apellidos.ToString();
+                txtDNI.Text = oEmpleado.DNI.ToString();
+                dtpFechaNac.Value = oEmpleado.FechaNacimiento;
+                txtTelefono.Text = oEmpleado.Telefono.ToString();
+                txtEmail.Text = oEmpleado.Email.ToString();
+                cboSucursal.SelectedItem = oEmpleado.Sucursal;
+                cboTipoEmpleado.SelectedItem = oEmpleado.TipoEmpleado;
+                dtpFechaIng.Value = oEmpleado.FechaIngreso;
+            }
+            if(accion == Modo.VER || accion == Modo.BORRAR)
+            {
+                grbDetalles.Enabled = false;
+            }
         }
 
         private void CargarCombo(string nombreTabla, ComboBox combo)
@@ -179,5 +214,7 @@ namespace EmpresaNorte.Presentacion
                 cargarEmpleado();
             }
         }
+
+
     }
 }
