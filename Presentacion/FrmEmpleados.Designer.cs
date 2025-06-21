@@ -32,6 +32,9 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.grbCriterios = new System.Windows.Forms.GroupBox();
+            this.chbBarrioProv = new System.Windows.Forms.CheckBox();
+            this.cboTipoEmpleado = new System.Windows.Forms.ComboBox();
+            this.lblTipoEmpleado = new System.Windows.Forms.Label();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.chbTodos = new System.Windows.Forms.CheckBox();
@@ -41,9 +44,6 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
-            this.cboTipoEmpleado = new System.Windows.Forms.ComboBox();
-            this.lblTipoEmpleado = new System.Windows.Forms.Label();
-            this.chbBarrioProv = new System.Windows.Forms.CheckBox();
             this.grbCriterios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +97,34 @@
             this.grbCriterios.TabIndex = 5;
             this.grbCriterios.TabStop = false;
             this.grbCriterios.Text = "Criterios";
+            // 
+            // chbBarrioProv
+            // 
+            this.chbBarrioProv.AutoSize = true;
+            this.chbBarrioProv.Location = new System.Drawing.Point(315, 74);
+            this.chbBarrioProv.Name = "chbBarrioProv";
+            this.chbBarrioProv.Size = new System.Drawing.Size(144, 17);
+            this.chbBarrioProv.TabIndex = 16;
+            this.chbBarrioProv.Text = "Mostrar barrio y provincia";
+            this.chbBarrioProv.UseVisualStyleBackColor = true;
+            // 
+            // cboTipoEmpleado
+            // 
+            this.cboTipoEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoEmpleado.FormattingEnabled = true;
+            this.cboTipoEmpleado.Location = new System.Drawing.Point(118, 109);
+            this.cboTipoEmpleado.Name = "cboTipoEmpleado";
+            this.cboTipoEmpleado.Size = new System.Drawing.Size(166, 21);
+            this.cboTipoEmpleado.TabIndex = 15;
+            // 
+            // lblTipoEmpleado
+            // 
+            this.lblTipoEmpleado.AutoSize = true;
+            this.lblTipoEmpleado.Location = new System.Drawing.Point(34, 112);
+            this.lblTipoEmpleado.Name = "lblTipoEmpleado";
+            this.lblTipoEmpleado.Size = new System.Drawing.Size(78, 13);
+            this.lblTipoEmpleado.TabIndex = 14;
+            this.lblTipoEmpleado.Text = "Tipo Empleado";
             // 
             // btnLimpiar
             // 
@@ -164,7 +192,6 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Enabled = false;
             this.btnEditar.Location = new System.Drawing.Point(116, 460);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(99, 41);
@@ -183,34 +210,6 @@
             this.btnBorrar.Text = "Borrar";
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
-            // 
-            // cboTipoEmpleado
-            // 
-            this.cboTipoEmpleado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoEmpleado.FormattingEnabled = true;
-            this.cboTipoEmpleado.Location = new System.Drawing.Point(118, 109);
-            this.cboTipoEmpleado.Name = "cboTipoEmpleado";
-            this.cboTipoEmpleado.Size = new System.Drawing.Size(166, 21);
-            this.cboTipoEmpleado.TabIndex = 15;
-            // 
-            // lblTipoEmpleado
-            // 
-            this.lblTipoEmpleado.AutoSize = true;
-            this.lblTipoEmpleado.Location = new System.Drawing.Point(34, 112);
-            this.lblTipoEmpleado.Name = "lblTipoEmpleado";
-            this.lblTipoEmpleado.Size = new System.Drawing.Size(78, 13);
-            this.lblTipoEmpleado.TabIndex = 14;
-            this.lblTipoEmpleado.Text = "Tipo Empleado";
-            // 
-            // chbBarrioProv
-            // 
-            this.chbBarrioProv.AutoSize = true;
-            this.chbBarrioProv.Location = new System.Drawing.Point(315, 74);
-            this.chbBarrioProv.Name = "chbBarrioProv";
-            this.chbBarrioProv.Size = new System.Drawing.Size(144, 17);
-            this.chbBarrioProv.TabIndex = 16;
-            this.chbBarrioProv.Text = "Mostrar barrio y provincia";
-            this.chbBarrioProv.UseVisualStyleBackColor = true;
             // 
             // FrmEmpleados
             // 

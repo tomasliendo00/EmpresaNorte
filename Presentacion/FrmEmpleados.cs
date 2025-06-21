@@ -1,4 +1,5 @@
 ﻿using EmpresaNorte.Datos;
+using EmpresaNorte.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -72,7 +73,8 @@ namespace EmpresaNorte.Presentacion
         {
             dgvEmpleados.Columns.Clear();
             //string consultaSQL = "Select * from Empleados where 1=1 ";
-            string consultaSQL = "SELECT e.Nombre, " +
+            string consultaSQL = "SELECT e.id_empleado 'ID', " +
+                                 "e.Nombre, " +
                                  "e.Apellido, " +
                                  "s.Direccion 'Sucursal', " +
                                  "t.Descripcion 'Cargo', " +
@@ -103,8 +105,8 @@ namespace EmpresaNorte.Presentacion
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             }
 
-            //if (dgvEmpleados.Columns.Count > 0)
-            //    dgvEmpleados.Columns[0].Visible = false;
+            if (dgvEmpleados.Columns.Count > 0)
+                dgvEmpleados.Columns[0].Visible = false;
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
@@ -119,7 +121,29 @@ namespace EmpresaNorte.Presentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            if (dgvEmpleados.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor, seleccione un empleado para editar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Obtener los datos del empleado seleccionado desde el DataGridView
+            Empleado empleadoSeleccionado = new Empleado
+            {
+                ID = Convert.ToInt32(dgvEmpleados.CurrentRow.Cells["ID"].Value), // Convert string to int
+                Nombres = dgvEmpleados.CurrentRow.Cells["Nombre"].Value?.ToString(),
+                Apellidos = dgvEmpleados.CurrentRow.Cells["Apellido"].Value?.ToString(),
+                DNI = dgvEmpleados.CurrentRow.Cells["DNI"].Value?.ToString(),
+                Telefono = dgvEmpleados.CurrentRow.Cells["Teléfono"].Value?.ToString(),
+                Email = dgvEmpleados.CurrentRow.Cells["Email"].Value?.ToString(),
+                FechaNacimiento = dgvEmpleados.CurrentRow.Cells["Fecha Nacimiento"].Value != null ? Convert.ToDateTime(dgvEmpleados.CurrentRow.Cells["Fecha Nacimiento"].Value) : DateTime.MinValue,
+                FechaIngreso = dgvEmpleados.CurrentRow.Cells["Fecha Ingreso"].Value != null ? Convert.ToDateTime(dgvEmpleados.CurrentRow.Cells["Fecha Ingreso"].Value) : DateTime.MinValue,
+                Sucursal = new Sucursal { Direccion = dgvEmpleados.CurrentRow.Cells["Sucursal"].Value?.ToString() },
+                TipoEmpleado = new TipoEmpleado { Descripcion = dgvEmpleados.CurrentRow.Cells["Cargo"].Value?.ToString() }
+            };
+
+            FrmDetalles frmDetalles = new FrmDetalles(Modo.EDITAR, empleadoSeleccionado);
+            frmDetalles.ShowDialog();
         }
 
         private void btnBorrar_Click(object sender, EventArgs e)
