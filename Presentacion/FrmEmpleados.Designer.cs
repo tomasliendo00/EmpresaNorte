@@ -44,6 +44,7 @@
             this.lblNombre = new System.Windows.Forms.Label();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
+            this.btnVer = new System.Windows.Forms.Button();
             this.grbCriterios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmpleados)).BeginInit();
             this.SuspendLayout();
@@ -107,6 +108,7 @@
             this.chbBarrioProv.TabIndex = 16;
             this.chbBarrioProv.Text = "Mostrar barrio y provincia";
             this.chbBarrioProv.UseVisualStyleBackColor = true;
+            this.chbBarrioProv.CheckedChanged += new System.EventHandler(this.chbBarrioProv_CheckedChanged);
             // 
             // cboTipoEmpleado
             // 
@@ -138,9 +140,14 @@
             // 
             // dgvEmpleados
             // 
+            this.dgvEmpleados.AllowUserToAddRows = false;
+            this.dgvEmpleados.AllowUserToDeleteRows = false;
+            this.dgvEmpleados.AllowUserToResizeColumns = false;
+            this.dgvEmpleados.AllowUserToResizeRows = false;
             this.dgvEmpleados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEmpleados.Location = new System.Drawing.Point(6, 151);
             this.dgvEmpleados.Name = "dgvEmpleados";
+            this.dgvEmpleados.ReadOnly = true;
             this.dgvEmpleados.Size = new System.Drawing.Size(907, 285);
             this.dgvEmpleados.TabIndex = 12;
             // 
@@ -192,7 +199,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(116, 460);
+            this.btnEditar.Location = new System.Drawing.Point(221, 460);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(99, 41);
             this.btnEditar.TabIndex = 6;
@@ -202,8 +209,7 @@
             // 
             // btnBorrar
             // 
-            this.btnBorrar.Enabled = false;
-            this.btnBorrar.Location = new System.Drawing.Point(221, 460);
+            this.btnBorrar.Location = new System.Drawing.Point(326, 460);
             this.btnBorrar.Name = "btnBorrar";
             this.btnBorrar.Size = new System.Drawing.Size(99, 41);
             this.btnBorrar.TabIndex = 7;
@@ -211,11 +217,22 @@
             this.btnBorrar.UseVisualStyleBackColor = true;
             this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
+            // btnVer
+            // 
+            this.btnVer.Location = new System.Drawing.Point(116, 460);
+            this.btnVer.Name = "btnVer";
+            this.btnVer.Size = new System.Drawing.Size(99, 41);
+            this.btnVer.TabIndex = 8;
+            this.btnVer.Text = "Ver";
+            this.btnVer.UseVisualStyleBackColor = true;
+            this.btnVer.Click += new System.EventHandler(this.btnVer_Click);
+            // 
             // FrmEmpleados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 507);
+            this.Controls.Add(this.btnVer);
             this.Controls.Add(this.btnBorrar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnNuevo);
@@ -248,5 +265,6 @@
         private System.Windows.Forms.ComboBox cboTipoEmpleado;
         private System.Windows.Forms.Label lblTipoEmpleado;
         private System.Windows.Forms.CheckBox chbBarrioProv;
+        private System.Windows.Forms.Button btnVer;
     }
 }

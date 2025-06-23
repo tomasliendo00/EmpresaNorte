@@ -44,6 +44,7 @@ namespace EmpresaNorte.Presentacion
             }
             else
             {
+                txtID.Text = oEmpleado.ID.ToString();
                 txtNombre.Text = oEmpleado.Nombres.ToString();
                 txtApellido.Text = oEmpleado.Apellidos.ToString();
                 txtDNI.Text = oEmpleado.DNI.ToString();
@@ -54,9 +55,18 @@ namespace EmpresaNorte.Presentacion
                 cboTipoEmpleado.SelectedItem = oEmpleado.TipoEmpleado;
                 dtpFechaIng.Value = oEmpleado.FechaIngreso;
             }
-            if(accion == Modo.VER || accion == Modo.BORRAR)
+            if (accion == Modo.VER || accion == Modo.BORRAR)
             {
-                grbDetalles.Enabled = false;
+                txtID.Enabled = false;
+                txtNombre.Enabled = false;
+                txtApellido.Enabled = false;
+                txtDNI.Enabled = false;
+                dtpFechaNac.Enabled = false;
+                txtTelefono.Enabled = false;
+                txtEmail.Enabled = false;
+                cboSucursal.Enabled = false;
+                cboTipoEmpleado.Enabled = false;
+                dtpFechaIng.Enabled = false;
             }
         }
 
@@ -74,7 +84,7 @@ namespace EmpresaNorte.Presentacion
             dtpFechaNac.MaxDate = DateTime.Today;
             dtpFechaNac.MinDate = DateTime.Today.AddYears(-90);
             dtpFechaIng.MaxDate = DateTime.Today;
-            dtpFechaIng.MinDate = DateTime.Today.AddYears(-15);
+            //dtpFechaIng.MinDate = DateTime.Today.AddYears(-15);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

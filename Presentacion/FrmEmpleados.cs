@@ -6,9 +6,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace EmpresaNorte.Presentacion
 {
@@ -89,7 +91,7 @@ namespace EmpresaNorte.Presentacion
                                  "where 1=1 ";
             if (chbBarrioProv.Checked == true)
             {
-                consultaSQL = "select e.Nombre, e.Apellido, s.Direccion 'Sucursal', b.descripcion 'Barrio', p.descripcion 'Provincia', t.Descripcion 'Cargo', e.DNI, e.Telefono 'Teléfono', e.Email, e.fecha_nac 'Fecha Nacimiento', e.fecha_ingreso 'Fecha Ingreso' from Empleados e join Sucursales s ON s.id_sucursal = e.id_sucursal join Tipos_Empleado t ON t.id_tipo_empleado = e.id_tipo_empleado join Barrios b ON b.id_barrio = S.id_barrio join Provincias p ON p.id_provincia = b.id_provincia where 1=1";
+                consultaSQL = "select e.id_empleado 'ID', e.Nombre, e.Apellido, s.Direccion 'Sucursal', b.descripcion 'Barrio', p.descripcion 'Provincia', t.Descripcion 'Cargo', e.DNI, e.Telefono 'Teléfono', e.Email, e.fecha_nac 'Fecha Nacimiento', e.fecha_ingreso 'Fecha Ingreso' from Empleados e join Sucursales s ON s.id_sucursal = e.id_sucursal join Tipos_Empleado t ON t.id_tipo_empleado = e.id_tipo_empleado join Barrios b ON b.id_barrio = S.id_barrio join Provincias p ON p.id_provincia = b.id_provincia where 1=1";
             }
             if (!string.IsNullOrEmpty(txtNombre.Text))
                 consultaSQL += $"and (nombre like '%{txtNombre.Text}%' or apellido like '%{txtNombre.Text}%') ";
@@ -138,7 +140,10 @@ namespace EmpresaNorte.Presentacion
                 Email = dgvEmpleados.CurrentRow.Cells["Email"].Value?.ToString(),
                 FechaNacimiento = dgvEmpleados.CurrentRow.Cells["Fecha Nacimiento"].Value != null ? Convert.ToDateTime(dgvEmpleados.CurrentRow.Cells["Fecha Nacimiento"].Value) : DateTime.MinValue,
                 FechaIngreso = dgvEmpleados.CurrentRow.Cells["Fecha Ingreso"].Value != null ? Convert.ToDateTime(dgvEmpleados.CurrentRow.Cells["Fecha Ingreso"].Value) : DateTime.MinValue,
-                Sucursal = new Sucursal { Direccion = dgvEmpleados.CurrentRow.Cells["Sucursal"].Value?.ToString() },
+                Sucursal = new Sucursal 
+                    { 
+                    Direccion = dgvEmpleados.CurrentRow.Cells["Sucursal"].Value?.ToString() 
+                    },
                 TipoEmpleado = new TipoEmpleado { Descripcion = dgvEmpleados.CurrentRow.Cells["Cargo"].Value?.ToString() }
             };
 
@@ -148,7 +153,67 @@ namespace EmpresaNorte.Presentacion
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
+            if(dgvEmpleados.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor, seleccione un empleado para borrar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            Empleado empleadoSeleccionado = new Empleado
+            {
+                ID = Convert.ToInt32(dgvEmpleados.CurrentRow.Cells["ID"].Value), // Convert string to int
+                Nombres = dgvEmpleados.CurrentRow.Cells["Nombre"].Value?.ToString(),
+                Apellidos = dgvEmpleados.CurrentRow.Cells["Apellido"].Value?.ToString(),
+                DNI = dgvEmpleados.CurrentRow.Cells["DNI"].Value?.ToString(),
+                Telefono = dgvEmpleados.CurrentRow.Cells["Teléfono"].Value?.ToString(),
+                Email = dgvEmpleados.CurrentRow.Cells["Email"].Value?.ToString(),
+                FechaNacimiento = dgvEmpleados.CurrentRow.Cells["Fecha Nacimiento"].Value != null ? Convert.ToDateTime(dgvEmpleados.CurrentRow.Cells["Fecha Nacimiento"].Value) : DateTime.MinValue,
+                FechaIngreso = dgvEmpleados.CurrentRow.Cells["Fecha Ingreso"].Value != null ? Convert.ToDateTime(dgvEmpleados.CurrentRow.Cells["Fecha Ingreso"].Value) : DateTime.MinValue,
+                Sucursal = new Sucursal
+                {
+                    Direccion = dgvEmpleados.CurrentRow.Cells["Sucursal"].Value?.ToString()
+                },
+                TipoEmpleado = new TipoEmpleado { Descripcion = dgvEmpleados.CurrentRow.Cells["Cargo"].Value?.ToString() }
+            }
+            ;
+
+            FrmDetalles frmDetalles = new FrmDetalles(Modo.BORRAR, empleadoSeleccionado);
+            frmDetalles.ShowDialog();
+        }
+
+        private void chbBarrioProv_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnVer_Click(object sender, EventArgs e)
+        {
+            if (dgvEmpleados.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor, seleccione un empleado para ver.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Empleado empleadoSeleccionado = new Empleado
+            {
+                ID = Convert.ToInt32(dgvEmpleados.CurrentRow.Cells["ID"].Value), // Convert string to int
+                Nombres = dgvEmpleados.CurrentRow.Cells["Nombre"].Value?.ToString(),
+                Apellidos = dgvEmpleados.CurrentRow.Cells["Apellido"].Value?.ToString(),
+                DNI = dgvEmpleados.CurrentRow.Cells["DNI"].Value?.ToString(),
+                Telefono = dgvEmpleados.CurrentRow.Cells["Teléfono"].Value?.ToString(),
+                Email = dgvEmpleados.CurrentRow.Cells["Email"].Value?.ToString(),
+                FechaNacimiento = dgvEmpleados.CurrentRow.Cells["Fecha Nacimiento"].Value != null ? Convert.ToDateTime(dgvEmpleados.CurrentRow.Cells["Fecha Nacimiento"].Value) : DateTime.MinValue,
+                FechaIngreso = dgvEmpleados.CurrentRow.Cells["Fecha Ingreso"].Value != null ? Convert.ToDateTime(dgvEmpleados.CurrentRow.Cells["Fecha Ingreso"].Value) : DateTime.MinValue,
+                Sucursal = new Sucursal
+                {
+                    Direccion = dgvEmpleados.CurrentRow.Cells["Sucursal"].Value?.ToString()
+                },
+                TipoEmpleado = new TipoEmpleado { Descripcion = dgvEmpleados.CurrentRow.Cells["Cargo"].Value?.ToString() }
+            }
+            ;
+
+            FrmDetalles frmDetalles = new FrmDetalles(Modo.VER, empleadoSeleccionado);
+            frmDetalles.ShowDialog();
         }
     }
 }

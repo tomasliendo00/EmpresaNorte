@@ -69,9 +69,14 @@
             // 
             // dgvBarrios
             // 
+            this.dgvBarrios.AllowUserToAddRows = false;
+            this.dgvBarrios.AllowUserToDeleteRows = false;
+            this.dgvBarrios.AllowUserToResizeColumns = false;
+            this.dgvBarrios.AllowUserToResizeRows = false;
             this.dgvBarrios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBarrios.Location = new System.Drawing.Point(36, 101);
             this.dgvBarrios.Name = "dgvBarrios";
+            this.dgvBarrios.ReadOnly = true;
             this.dgvBarrios.Size = new System.Drawing.Size(307, 320);
             this.dgvBarrios.TabIndex = 4;
             // 
