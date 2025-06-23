@@ -38,6 +38,7 @@ namespace EmpresaNorte.Presentacion
             FechaMaxMin();
             CargarCombo("sucursales", cboSucursal);
             CargarCombo("tipos_empleado", cboTipoEmpleado);
+
             if(accion == Modo.NUEVO)
             {
                 oEmpleado = new Empleado();
@@ -51,8 +52,10 @@ namespace EmpresaNorte.Presentacion
                 dtpFechaNac.Value = oEmpleado.FechaNacimiento;
                 txtTelefono.Text = oEmpleado.Telefono.ToString();
                 txtEmail.Text = oEmpleado.Email.ToString();
-                cboSucursal.SelectedItem = oEmpleado.Sucursal;
-                cboTipoEmpleado.SelectedItem = oEmpleado.TipoEmpleado;
+                cboSucursal.SelectedIndex = oEmpleado.Sucursal.ID;
+                cboTipoEmpleado.SelectedIndex = oEmpleado.TipoEmpleado.ID;
+                //cboSucursal.SelectedValue = oEmpleado.Sucursal.ID;
+                //cboTipoEmpleado.SelectedValue = oEmpleado.TipoEmpleado.ID;
                 dtpFechaIng.Value = oEmpleado.FechaIngreso;
             }
             if (accion == Modo.VER || accion == Modo.BORRAR)
