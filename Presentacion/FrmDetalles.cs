@@ -43,6 +43,7 @@ namespace EmpresaNorte.Presentacion
             if(accion == Modo.NUEVO)
             {
                 oEmpleado = new Empleado();
+                btnAceptar.Text = "Cargar";
                 aux = 0;
             }
             else
@@ -54,15 +55,15 @@ namespace EmpresaNorte.Presentacion
                 dtpFechaNac.Value = oEmpleado.FechaNacimiento;
                 txtTelefono.Text = oEmpleado.Telefono.ToString();
                 txtEmail.Text = oEmpleado.Email.ToString();
-                cboSucursal.SelectedIndex = oEmpleado.Sucursal.ID;
-                cboTipoEmpleado.SelectedIndex = oEmpleado.TipoEmpleado.ID;
+                cboSucursal.SelectedValue = oEmpleado.Sucursal.ID;
+                cboTipoEmpleado.SelectedValue = oEmpleado.TipoEmpleado.ID;
                 dtpFechaIng.Value = oEmpleado.FechaIngreso;
             }
 
-            //if(accion == Modo.EDITAR)
-            //{
-            //    aux = 2;
-            //}
+            if (accion == Modo.EDITAR)
+            {
+                btnAceptar.Text = "Editar";
+            }
 
             if (accion == Modo.VER)
             {
@@ -76,6 +77,7 @@ namespace EmpresaNorte.Presentacion
                 cboSucursal.Enabled = false;
                 cboTipoEmpleado.Enabled = false;
                 dtpFechaIng.Enabled = false;
+                btnCancelar.Visible = false;
                 //aux = 1;
             }
 
@@ -91,6 +93,7 @@ namespace EmpresaNorte.Presentacion
                 cboSucursal.Enabled = false;
                 cboTipoEmpleado.Enabled = false;
                 dtpFechaIng.Enabled = false;
+                btnAceptar.Text = "Eliminar";
                 //aux = 3;
             }
         }

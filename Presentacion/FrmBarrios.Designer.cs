@@ -55,14 +55,14 @@
             this.cboProvincia.Location = new System.Drawing.Point(99, 31);
             this.cboProvincia.Name = "cboProvincia";
             this.cboProvincia.Size = new System.Drawing.Size(121, 21);
-            this.cboProvincia.TabIndex = 2;
+            this.cboProvincia.TabIndex = 0;
             // 
             // btnConsultar
             // 
             this.btnConsultar.Location = new System.Drawing.Point(256, 60);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
-            this.btnConsultar.TabIndex = 3;
+            this.btnConsultar.TabIndex = 2;
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.UseVisualStyleBackColor = true;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
@@ -78,14 +78,14 @@
             this.dgvBarrios.Name = "dgvBarrios";
             this.dgvBarrios.ReadOnly = true;
             this.dgvBarrios.Size = new System.Drawing.Size(307, 320);
-            this.dgvBarrios.TabIndex = 4;
+            this.dgvBarrios.TabIndex = 3;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Location = new System.Drawing.Point(268, 436);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 5;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -107,7 +107,7 @@
             this.chbTodos.Location = new System.Drawing.Point(275, 21);
             this.chbTodos.Name = "chbTodos";
             this.chbTodos.Size = new System.Drawing.Size(56, 17);
-            this.chbTodos.TabIndex = 7;
+            this.chbTodos.TabIndex = 1;
             this.chbTodos.Text = "Todos";
             this.chbTodos.UseVisualStyleBackColor = true;
             this.chbTodos.CheckedChanged += new System.EventHandler(this.chbTodos_CheckedChanged);
