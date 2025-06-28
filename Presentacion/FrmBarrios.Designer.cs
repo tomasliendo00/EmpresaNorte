@@ -75,8 +75,10 @@
             this.dgvBarrios.AllowUserToResizeRows = false;
             this.dgvBarrios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBarrios.Location = new System.Drawing.Point(36, 101);
+            this.dgvBarrios.MultiSelect = false;
             this.dgvBarrios.Name = "dgvBarrios";
             this.dgvBarrios.ReadOnly = true;
+            this.dgvBarrios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBarrios.Size = new System.Drawing.Size(307, 320);
             this.dgvBarrios.TabIndex = 3;
             // 
